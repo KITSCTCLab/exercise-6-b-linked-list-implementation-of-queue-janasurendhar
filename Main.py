@@ -1,4 +1,4 @@
-class Node:
+ class Node:
   def __init__(self, data):
     self.data = data
     self.next = None
@@ -10,14 +10,25 @@ class Queue:
     self.last = None
 
   def enqueue(self, data) -> None:
-    # Write your code here
+        new = Node(data)
+        if self.last is not None:
+            self.last.next = new
+        if self.head is None:
+            self.head = new
+        self.last = new
 
   def dequeue(self) -> None:
-    # Write your code here
+        if not self.head is None:
+            self.head = self.head.next
+            if self.head is None:
+              self.last = None
 
   def status(self) -> None:
-    # Write your code here
-
+        current = self.head
+        while current is not None:
+          print(current.data, end = "=>")
+          current = current.next
+        print("None")
 
 # Do not change the following code
 queue = Queue()
